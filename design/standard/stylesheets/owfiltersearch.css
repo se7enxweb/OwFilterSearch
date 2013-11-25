@@ -1,0 +1,21 @@
+.class_filter_field {
+    min-width: 300px;
+}
+
+.attributes_filter_field {
+    height: 100px;
+    min-width: 300px;
+}
+
+.select_class_button {
+    vertical-align: top;
+}
+
+.result_list th.empty_attributes_modified, .result_list th.empty_attributes_action {
+    width: 1%
+}
+
+
+.result_list td.empty_attributes_modified {
+    white-space: nowrap;
+}
