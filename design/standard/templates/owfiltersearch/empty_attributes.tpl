@@ -72,7 +72,7 @@
                     <div class="block">
                         <div class="yui-dt">
                             {if $results}
-                                {$result_count} resultas
+                                {"%1 results"|i18n('owfiltersearch/empty_attributes',,hash( '%1', $result_count ) )}
 	                            <table class="list result_list">
 	                                <thead>
 	                                    <tr class="yui-dt-first yui-dt-last">
@@ -96,7 +96,7 @@
 	                                </tbody>
 	                            </table>
                             {else}
-                                no results
+                                {"No result"|i18n('owfiltersearch/empty_attributes')}
                             {/if}
                         </div>
                         <div class="context-toolbar">

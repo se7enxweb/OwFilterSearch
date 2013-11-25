@@ -55,5 +55,13 @@
         <source>Name</source>
         <translation>Nom</translation>
     </message>
+    <message>
+        <source>%1 results</source>
+        <translation>%1 resultats</translation>
+    </message>
+    <message>
+        <source>No result</source>
+        <translation>Aucun resultat</translation>
+    </message>
 </context>
 </TS>
