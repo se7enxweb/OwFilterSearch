@@ -27,6 +27,7 @@ PolicyList[]=owfiltersearch/read
 Name=Filter search
 Links[empty_attributes]=owfiltersearch/empty_attributes
 Links[missing_translations]=owfiltersearch/missing_translations
-LinkNames[]
+LinkNames[empty_attributes]=Empty attributes
+LinkNames[missing_translations]=Missing translations
 
 */ ?>

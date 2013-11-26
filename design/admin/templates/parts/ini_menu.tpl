@@ -58,7 +58,7 @@
 
     {if $has_access}
         {* DESIGN: Header START *}<div class="box-header"><div class="box-tc"><div class="box-ml"><div class="box-mr"><div class="box-tl"><div class="box-tr">
-        <h4>{if is_set( $i18n_hash[ $menu_name ] )}{$i18n_hash[ $menu_name ]|wash}{else}{$menu_name|d18n($i18n_section)}{/if}</h4>
+        <h4>{if is_set( $i18n_hash[ $menu_name ] )}{$i18n_hash[ $menu_name ]|wash}{else}{$menu_name|i18n($i18n_section)}{/if}</h4>
         {* DESIGN: Header END *}</div></div></div></div></div></div>
 
         {* DESIGN: Content START *}<div class="box-bc"><div class="box-ml"><div class="box-mr"><div class="box-bl"><div class="box-br"><div class="box-content">
@@ -67,7 +67,7 @@
             <ul class="leftmenu-items">
             {foreach $url_list as $link_key => $link_url}
                 {if is_set( $name_list[ $link_key ] )}
-                    {set $item_name = $name_list[$link_key]|d18n($i18n_section)}
+                    {set $item_name = $name_list[$link_key]|i18n($i18n_section)}
                 {else}
                     {set $item_name = first_set( $i18n_hash[ $link_key ], $link_key )|wash}
                 {/if}
@@ -78,7 +78,7 @@
             <ul class="leftmenu-items">
             {foreach $url_list as $link_key => $link_url}
                 {if is_set( $name_list[ $link_key ] )}
-                    {set $item_name = $name_list[$link_key]|d18n($i18n_section)}
+                    {set $item_name = $name_list[$link_key]|i18n($i18n_section)}
                 {else}
                     {set $item_name = first_set( $i18n_hash[ $link_key ], $link_key )|wash}
                 {/if}
