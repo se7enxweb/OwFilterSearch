@@ -23,15 +23,40 @@
                                         <option value="{$class.identifier}" {if $class_filter|eq($class.identifier)}selected="selected"{/if}>{$class.name}</option>
                                     {/foreach}
                                 </select>
-                                <label>{'Class attributes'|i18n('owfiltersearch/empty_attributes' )}</label>
+                                <input class="smallbutton select_class_button" type="submit" name="SelectClassButton" value="{'Update attributes'|i18n('owfiltersearch/empty_attributes')}"/>
+                                <hr />
                                 {if is_set( $class_attribute_list )}
-                                    <select name="AttributeFilters[]" multiple class="attributes_filter_field">
+                                    <label>{'Empty class attributes'|i18n('owfiltersearch/empty_attributes' )}</label>
+                                    <select name="EmptyAttributeFilters[]" multiple class="empty_attributes_filter_field">
                                         {foreach $class_attribute_list as $class_attribute}
-                                            <option value="{$class_attribute.identifier}" {if $attribute_filters|contains( $class_attribute.identifier )}selected="selected"{/if}>{$class_attribute.name}</option>
+                                            <option value="{$class_attribute.identifier}" {if $empty_attribute_filters|contains( $class_attribute.identifier )}selected="selected"{/if}>{$class_attribute.name}</option>
                                         {/foreach}
                                     </select>
+                                    <input type="radio" name="EmptyAttributeFilterType" value="OR" id="EmptyAttributeFilterType_or" {if $empty_attribute_filter_type|eq('OR')}checked="checked"{/if} />
+                                    <label for="EmptyAttributeFilterType_or" class="inline">{"At least one of these attributes is empty"|i18n('owfiltersearch/empty_attributes' )}</label>
+                                    <input type="radio" name="EmptyAttributeFilterType" value="AND" id="EmptyAttributeFilterType_and" {if $empty_attribute_filter_type|eq('AND')}checked="checked"{/if} />
+                                    <label for="EmptyAttributeFilterType_and" class="inline">{"All attributes are empty"|i18n('owfiltersearch/empty_attributes' )}</label>
+                                    <hr />
+                                    <label>{'Filled class attributes'|i18n('owfiltersearch/empty_attributes' )}</label>
+                                    <select name="FilledAttributeFilters[]" multiple class="filled_attributes_filter_field">
+                                        {foreach $class_attribute_list as $class_attribute}
+                                            <option value="{$class_attribute.identifier}" {if $filled_attribute_filters|contains( $class_attribute.identifier )}selected="selected"{/if}>{$class_attribute.name}</option>
+                                        {/foreach}
+                                    </select>
+                                    <input type="radio" name="FilledAttributeFilterType" value="OR" id="FilledAttributeFilterType_or" {if $filled_attribute_filter_type|eq('OR')}checked="checked"{/if} />
+                                    <label for="FilledAttributeFilterType_or" class="inline">{"At least one of these attributes is filled"|i18n('owfiltersearch/empty_attributes' )}</label>
+                                    <input type="radio" name="FilledAttributeFilterType" value="AND" id="FilledAttributeFilterType_and" {if $filled_attribute_filter_type|eq('AND')}checked="checked"{/if} />
+                                    <label for="FilledAttributeFilterType_and" class="inline">{"All attributes are filled"|i18n('owfiltersearch/empty_attributes' )}</label>
+                                    <hr />
+                                    <label>{'Translations'|i18n('owfiltersearch/empty_attributes' )}</label>
+                                    <input type="radio" name="TranslationFilter" value="" id="TranslationFilter_all" {if $translation_filter|eq('')}checked="checked"{/if} />
+                                    <label for="TranslationFilter_all" class="inline">{"All"|i18n('owfiltersearch/empty_attributes' )}</label>
+                                    {foreach fetch( 'content', 'translation_list' ) as $locale}
+                                        <input type="radio" name="TranslationFilter" value="{$locale.locale_code}" id="TranslationFilter_{$locale.locale_code}" {if $translation_filter|eq($locale.locale_code)}checked="checked"{/if} />
+                                        <label for="TranslationFilter_{$locale.locale_code}" class="inline">{$locale.country_name} ({$locale.locale_code})</label>
+									{/foreach}
+									<hr />
                                 {/if}
-                                <input class="smallbutton select_class_button" type="submit" name="SelectClassButton" value="{'Update attributes'|i18n('owfiltersearch/empty_attributes')}"/>
                                 <div class="block">
                                     <input class="button filter_button" type="submit" name="FilterButton" value="{'Search'|i18n('owfiltersearch/empty_attributes')}"/>
                                 </div>

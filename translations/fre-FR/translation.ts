@@ -36,6 +36,38 @@
         <translation>Attributes de la classe</translation>
     </message>
     <message>
+        <source>Empty class attributes</source>
+        <translation>Attributes de la classe vides</translation>
+    </message>
+    <message>
+        <source>At least one of these attributes is empty</source>
+        <translation>Au moins un de ces attribut est vide</translation>
+    </message>
+    <message>
+        <source>All attributes are empty</source>
+        <translation>Tous les attributs sont vides</translation>
+    </message>
+    <message>
+        <source>Filled class attributes</source>
+        <translation>Attributes de la classe remplis</translation>
+    </message>
+    <message>
+        <source>At least one of these attributes is filled</source>
+        <translation>Au moins un de ces attribut est rempli</translation>
+    </message>
+    <message>
+        <source>All attributes are filled</source>
+        <translation>Tous les attributs sont remplis</translation>
+    </message>
+    <message>
+        <source>Translations</source>
+        <translation>Traductions</translation>
+    </message>
+    <message>
+        <source>All</source>
+        <translation>Toutes</translation>
+    </message>
+    <message>
         <source>Update attributes</source>
         <translation>Mettre à jour la liste des attributs</translation>
     </message>

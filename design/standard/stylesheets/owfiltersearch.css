@@ -1,8 +1,15 @@
+fieldset, fieldset * {
+    vertical-align: top;
+}
+
+.inline {
+    display: inline;
+}
 .class_filter_field {
     min-width: 300px;
 }
 
-.attributes_filter_field {
+.empty_attributes_filter_field, .filled_attributes_filter_field {
     height: 100px;
     min-width: 300px;
 }

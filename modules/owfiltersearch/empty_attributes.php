@@ -8,31 +8,36 @@ if( is_callable( 'eZTemplate::factory' ) ) {
     $tpl = templateInit( );
 }
 
-$classFilter = $Params['ClassFilter'];
-if( $Module->hasActionParameter( 'ClassFilter' ) ) {
-    $classFilter = $Module->actionParameter( 'ClassFilter' );
-}
-
-$tpl->setVariable( 'class_filter', $classFilter );
-if( $classFilter ) {
-    $contentClass = eZContentClass::fetchByIdentifier( $classFilter );
-    if( $contentClass instanceof eZContentClass ) {
-        $tpl->setVariable( 'class_attribute_list', $contentClass->fetchAttributes( ) );
-    } else {
-        $error = "Class not found";
+$filterParams = array( );
+if( $Module->currentAction( ) != FALSE ) {
+    foreach( $Module->Functions[$Module->currentView()]['post_action_parameters'][$Module->currentAction()] as $parameter ) {
+        if( !empty( $Params[$parameter] ) ) {
+            $filterParams[$parameter] = $Params[$parameter];
+        } elseif( $Module->hasActionParameter( $parameter ) ) {
+            $filterParams[$parameter] = $Module->actionParameter( $parameter );
+        }
     }
 }
-$attributeFilterList = !empty( $Params['AttributeFilters'] ) ? explode( ',', (string)$Params['AttributeFilters'] ) : array( );
-if( $Module->hasActionParameter( 'AttributeFilters' ) ) {
-    $attributeFilterList = $Module->actionParameter( 'AttributeFilters' );
+
+$tpl->setVariable( 'empty_attribute_filter_type', 'AND' );
+$tpl->setVariable( 'filled_attribute_filter_type', 'AND' );
+$tpl->setVariable( 'translation_filter', '' );
+
+foreach( $filterParams as $variableName => $value ) {
+    $variableName = strtolower( preg_replace( '/\B([A-Z])/', '_$1', $variableName ) );
+    $tpl->setVariable( $variableName, $value );
 }
 
-$tpl->setVariable( 'attribute_filters', $attributeFilterList );
+// if we know the content class, fill the list of its attributes
+if( isset( $filterParams['ClassFilter'] ) ) {
+    $contentClass = eZContentClass::fetchByIdentifier( $filterParams['ClassFilter'] );
+    if( $contentClass instanceof eZContentClass ) {
+        $tpl->setVariable( 'class_attribute_list', $contentClass->fetchAttributes( ) );
+    }
+}
 
-if( isset( $error ) ) {
-    $tpl->setVariable( 'error', $error );
-} elseif( isset( $contentClass ) && !empty( $attributeFilterList ) ) {
-    $filter = new OWFilterSearchEmptyAttributes( $contentClass, $attributeFilterList );
+if( !empty( $filterParams ) && isset( $filterParams['ClassFilter'] ) && (isset( $filterParams['EmptyAttributeFilters'] ) || isset( $filterParams['FilledAttributeFilters'] )) ) {
+    $filter = new OWFilterSearchEmptyAttributes( $filterParams );
     $offset = $Params['Offset'];
     if( !is_numeric( $offset ) ) {
         $offset = 0;
@@ -55,10 +60,11 @@ if( isset( $error ) ) {
     $tpl->setVariable( 'limit', $length );
     $tpl->setVariable( 'results', $results['nodes'] );
     $tpl->setVariable( 'result_count', $results['count'] );
-    $page_uri = trim( $Module->redirectionURI( 'owfiltersearch', 'empty_attributes', array(
-        $contentClass->attribute( 'identifier' ),
-        implode( ',', $attributeFilterList )
-    ) ), '/' );
+    $filterParamURIArray = array( );
+    foreach( $filterParams as $key => $value ) {
+        $filterParamURIArray[$key] = is_array( $value ) ? implode( ',', $value ) : $value;
+    }
+    $page_uri = trim( $Module->redirectionURI( 'owfiltersearch', 'empty_attributes', $filterParamURIArray ), '/' );
     $tpl->setVariable( 'page_uri', $page_uri );
     $tpl->setVariable( 'view_parameters', array( 'offset' => $offset ) );
 }
