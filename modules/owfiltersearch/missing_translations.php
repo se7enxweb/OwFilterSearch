@@ -63,15 +63,21 @@ $Result['content'] = $tpl->fetch( 'design:owfiltersearch/missing_translations.tp
 $Result['left_menu'] = 'design:owfiltersearch/menu.tpl';
 
 if( function_exists( 'ezi18n' ) ) {
-    $Result['path'] = array( array(
-            'url' => 'filtersearch/list',
+    $Result['path'] = array(
+        array( 'text' => ezi18n( 'design/admin/parts/owfiltersearch/menu', 'Filter search' ) ),
+        array(
+            'url' => 'filtersearch/missing_translations',
             'text' => ezi18n( 'design/admin/parts/owfiltersearch/menu', 'Missing translations' )
-        ) );
+        )
+    );
 
 } else {
-    $Result['path'] = array( array(
-            'url' => 'filtersearch/list',
+    $Result['path'] = array(
+        array( 'text' => ezpI18n::tr( 'design/admin/parts/owfiltersearch/menu', 'Filter search' ) ),
+        array(
+            'url' => 'filtersearch/missing_translations',
             'text' => ezpI18n::tr( 'design/admin/parts/owfiltersearch/menu', 'Missing translations' )
-        ) );
+        )
+    );
 
 }

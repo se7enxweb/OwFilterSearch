@@ -73,15 +73,21 @@ $Result['content'] = $tpl->fetch( 'design:owfiltersearch/empty_attributes.tpl' )
 $Result['left_menu'] = 'design:owfiltersearch/menu.tpl';
 
 if( function_exists( 'ezi18n' ) ) {
-    $Result['path'] = array( array(
-            'url' => 'filtersearch/list',
+    $Result['path'] = array(
+        array( 'text' => ezi18n( 'design/admin/parts/owfiltersearch/menu', 'Filter search' ) ),
+        array(
+            'url' => 'filtersearch/empty_attributes',
             'text' => ezi18n( 'design/admin/parts/owfiltersearch/menu', 'Empty attributes' )
-        ) );
+        )
+    );
 
 } else {
-    $Result['path'] = array( array(
+    $Result['path'] = array(
+        array( 'text' => ezpI18n::tr( 'design/admin/parts/owfiltersearch/menu', 'Filter search' ) ),
+        array(
             'url' => 'filtersearch/list',
             'text' => ezpI18n::tr( 'design/admin/parts/owfiltersearch/menu', 'Empty attributes' )
-        ) );
+        )
+    );
 
 }
