@@ -8,6 +8,7 @@
 
 {include uri='design:parts/ini_menu.tpl' ini_section='Leftmenu_owfiltersearch' i18n_hash=hash(
     'empty_attributes',              'Empty attributes'|i18n( 'design/admin/parts/owfiltersearch/menu' ),
+    'missing_translations',          'Missing translations'|i18n( 'design/admin/parts/owfiltersearch/menu' ),
 )}
 
 {* Left menu width control. *}

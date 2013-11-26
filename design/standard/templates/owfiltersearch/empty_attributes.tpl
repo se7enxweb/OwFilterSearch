@@ -27,7 +27,7 @@
                                 <hr />
                                 {if is_set( $class_attribute_list )}
                                     <label>{'Empty class attributes'|i18n('owfiltersearch/empty_attributes' )}</label>
-                                    <select name="EmptyAttributeFilters[]" multiple class="empty_attributes_filter_field">
+                                    <select name="EmptyAttributeFilters[]" multiple class="empty_attributes_filters_field">
                                         {foreach $class_attribute_list as $class_attribute}
                                             <option value="{$class_attribute.identifier}" {if $empty_attribute_filters|contains( $class_attribute.identifier )}selected="selected"{/if}>{$class_attribute.name}</option>
                                         {/foreach}
@@ -38,7 +38,7 @@
                                     <label for="EmptyAttributeFilterType_and" class="inline">{"All attributes are empty"|i18n('owfiltersearch/empty_attributes' )}</label>
                                     <hr />
                                     <label>{'Filled class attributes'|i18n('owfiltersearch/empty_attributes' )}</label>
-                                    <select name="FilledAttributeFilters[]" multiple class="filled_attributes_filter_field">
+                                    <select name="FilledAttributeFilters[]" multiple class="filled_attributes_filters_field">
                                         {foreach $class_attribute_list as $class_attribute}
                                             <option value="{$class_attribute.identifier}" {if $filled_attribute_filters|contains( $class_attribute.identifier )}selected="selected"{/if}>{$class_attribute.name}</option>
                                         {/foreach}
@@ -58,7 +58,7 @@
 									<hr />
                                 {/if}
                                 <div class="block">
-                                    <input class="button filter_button" type="submit" name="FilterButton" value="{'Search'|i18n('owfiltersearch/empty_attributes')}"/>
+                                    <input class="button filter_button" type="submit" name="FilterButton" value="{'Search'|i18n('owfiltersearch/all')}"/>
                                 </div>
                             </fieldset>
                         </form>
@@ -97,12 +97,12 @@
                     <div class="block">
                         <div class="yui-dt">
                             {if $results}
-                                {"%1 results"|i18n('owfiltersearch/empty_attributes',,hash( '%1', $result_count ) )}
+                                {"%1 results"|i18n('owfiltersearch/all',,hash( '%1', $result_count ) )}
 	                            <table class="list result_list">
 	                                <thead>
 	                                    <tr class="yui-dt-first yui-dt-last">
-	                                        <th class="empty_attributes_content"><div class="yui-dt-liner">{'Name'|i18n('owfiltersearch/empty_attributes' )}</div></th>
-                                            <th class="empty_attributes_modified"><div class="yui-dt-liner">{'Modified'|i18n('owfiltersearch/empty_attributes' )}</div></th>
+	                                        <th class="empty_attributes_content"><div class="yui-dt-liner">{'Name'|i18n('owfiltersearch/all' )}</div></th>
+                                            <th class="empty_attributes_modified"><div class="yui-dt-liner">{'Modified'|i18n('owfiltersearch/all' )}</div></th>
 	                                        <th class="empty_attributes_action"><div class="yui-dt-liner">&nbsp;</div></th>
 	                                    </tr>
 	                                </thead>
@@ -114,14 +114,14 @@
                                                     {$result.object.modified|l10n(datetime)}
 												</td>
 												<td class="empty_attributes_action">
-												    <a href={concat( '/content/edit/', $result.object.id )|ezurl()}><img src={'edit.gif'|ezimage()} alt="{'Modify'|i18n( 'owfiltersearch/empty_attributes')}" /></a>
+												    <a href={concat( '/content/edit/', $result.object.id )|ezurl()}><img src={'edit.gif'|ezimage()} alt="{'Modify'|i18n( 'owfiltersearch/all')}" /></a>
 												</td>
 	                                        </tr>
 	                                    {/foreach}
 	                                </tbody>
 	                            </table>
                             {else}
-                                {"No result"|i18n('owfiltersearch/empty_attributes')}
+                                {"No result"|i18n('owfiltersearch/all')}
                             {/if}
                         </div>
                         <div class="context-toolbar">

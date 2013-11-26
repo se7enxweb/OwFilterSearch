@@ -16,6 +16,37 @@
         <source>Empty attributes</source>
         <translation>Attributs vides</translation>
     </message>
+    <message>
+        <source>Missing translations</source>
+        <translation>Traductions manquantes</translation>
+    </message>
+</context>
+<context>
+    <name>owfiltersearch/all</name>
+    <message>
+        <source>%1 results</source>
+        <translation>%1 resultats</translation>
+    </message>
+    <message>
+        <source>No result</source>
+        <translation>Aucun resultat</translation>
+    </message>
+    <message>
+        <source>Search</source>
+        <translation>Rechercher</translation>
+    </message>
+    <message>
+        <source>Modified</source>
+        <translation>Modifié</translation>
+    </message>
+    <message>
+        <source>Modify</source>
+        <translation>Modifier</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Nom</translation>
+    </message>
 </context>
 <context>
     <name>owfiltersearch/empty_attributes</name>
@@ -71,29 +102,44 @@
         <source>Update attributes</source>
         <translation>Mettre à jour la liste des attributs</translation>
     </message>
+</context>
+<context>
+    <name>owfiltersearch/missing_translations</name>
     <message>
-        <source>Search</source>
-        <translation>Rechercher</translation>
+        <source>Missing translations</source>
+        <translation>Recherche des tranductions manqutes</translation>
     </message>
     <message>
-        <source>Modified</source>
-        <translation>Modifié</translation>
+        <source>Filters</source>
+        <translation>Filtres</translation>
     </message>
     <message>
-        <source>Modify</source>
-        <translation>Modifier</translation>
+        <source>Content class</source>
+        <translation>Classe de contenu</translation>
     </message>
     <message>
-        <source>Name</source>
-        <translation>Nom</translation>
+        <source>Missing translations</source>
+        <translation>Traductions manquantes</translation>
     </message>
     <message>
-        <source>%1 results</source>
-        <translation>%1 resultats</translation>
+        <source>At least one translation is missing</source>
+        <translation>Au moins une des traduction est manquante</translation>
     </message>
     <message>
-        <source>No result</source>
-        <translation>Aucun resultat</translation>
+        <source>All translations are missing</source>
+        <translation>Toutes les traductions sont manquantes</translation>
+    </message>
+    <message>
+        <source>Existing translations</source>
+        <translation>Traductions existantes</translation>
+    </message>
+    <message>
+        <source>At least one translation exists</source>
+        <translation>Au moins une des traduction existe</translation>
+    </message>
+    <message>
+        <source>All translations exist</source>
+        <translation>Toutes les traductions existent</translation>
     </message>
 </context>
 </TS>
