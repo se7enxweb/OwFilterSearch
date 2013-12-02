@@ -7,13 +7,6 @@
     </message>
 </context>
 <context>
-    <name>kernel/navigationpart</name>
-    <message>
-        <source>Filter search</source>
-        <translation>Recherche par filtre</translation>
-    </message>
-</context>
-<context>
     <name>design/admin/parts/owfiltersearch/menu</name>
     <message>
         <source>Filter search</source>
