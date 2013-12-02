@@ -3,9 +3,9 @@
 class OWFilterSearchEmptyAttributes {
     protected $_filterParams;
     protected $_contentClass;
-    protected $_emptyAttributeFilters;
+    protected $_emptyAttributeFilters = array();
     protected $_emptyAttributeFilterType;
-    protected $_filledAttributeFilters;
+    protected $_filledAttributeFilters = array();
     protected $_filledAttributeFilterType;
     protected $_translationFilter;
 
@@ -29,7 +29,7 @@ class OWFilterSearchEmptyAttributes {
         $conds = null;
         $sorts = array( "ezcontentobject.name" => 'asc' );
         $asObject = true;
-        $grouping = array( 'ezcontentobject_tree.main_node_id' );
+        $grouping = false;
         $custom_tables = array( 'ezcontentobject' );
         $custom_conds = null;
 
@@ -115,7 +115,7 @@ class OWFilterSearchEmptyAttributes {
             $custom_conds = ' WHERE ( ' . implode( ' ) ' . PHP_EOL . ' AND ( ', $whereList ) . ' )';
         }
         $custom_fields = array(
-            'ezcontentobject_tree.node_id',
+            'DISTINCT( ezcontentobject_tree.node_id )',
             'ezcontentobject_tree.parent_node_id',
             'ezcontentobject_tree.main_node_id',
             'ezcontentobject_tree.contentobject_id',
@@ -135,10 +135,10 @@ class OWFilterSearchEmptyAttributes {
         $custom_tables = array_unique( $custom_tables );
         $results['nodes'] = @eZPersistentObject::fetchObjectList( $def, $field_filters, $conds, $sorts, $limit, $asObject, $grouping, $custom_fields, $custom_tables, $custom_conds );
         $custom_fields = array( array(
-                'operation' => 'count( * )',
+                'operation' => 'count( DISTINCT(  ezcontentobject_tree.node_id ) )',
                 'name' => 'count'
             ) );
-        $rows = @eZPersistentObject::fetchObjectList( $def, $field_filters, $conds, false, null, false, false, $custom_fields, $custom_tables, $custom_conds );
+        $rows = @eZPersistentObject::fetchObjectList( $def, $field_filters, $conds, false, null, false, $grouping, $custom_fields, $custom_tables, $custom_conds );
         $results['count'] = $rows[0]['count'];
         return $results;
     }
